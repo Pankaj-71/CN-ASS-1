@@ -1,11 +1,19 @@
 import pyshark
+import sys
 
 # Capture live packets from a network interface (e.g., eth0)
 cap = pyshark.LiveCapture(interface='lo')
 
-# Capture 5 packets
+# cap.sniff_continuously()
 count=0
-for packet in cap.sniff_continuously():
+
+for pkt in cap.sniff_continuously():
     count+=1
-    print(count)
-    print(packet)
+    if count==10:
+        break
+
+print(count)
+
+
+
+
